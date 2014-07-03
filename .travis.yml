@@ -1,0 +1,15 @@
+script:
+  - exit 0
+language: node_js
+node_js:
+  - '0.10'
+notifications:
+  email: false
+deploy:
+  provider: npm
+  email: stephan@boennemann.me
+  api_key:
+    secure: j/3R3qwblFEKbF4u9oa72bRy9G+/cAjnbIygN2KrOe4PbHBjj0i07Wm653ZESuesUUanf8n/Vv0gVn7XaLACWmZ+J1v8F9tkzt5/1k/cQwEQrlDQv7nsSCG+LkojM9WjYq22xMf7Vt1v7Nmy1tk6S2CQFTBZfJccPUePpa8MAxY=
+  on:
+    tags: true
+    repo: hoodiehq/grunt-release-hoodie

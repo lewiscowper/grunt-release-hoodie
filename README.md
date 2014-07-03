@@ -1,4 +1,5 @@
 # grunt-release-hoodie
+[![Build Status](https://travis-ci.org/hoodiehq/grunt-release-hoodie.svg)](https://travis-ci.org/hoodiehq/grunt-release-hoodie)
 
 > Automatically configures the hoodie release process.
 
