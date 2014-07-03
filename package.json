@@ -1,0 +1,28 @@
+{
+  "name": "grunt-release-hoodie",
+  "version": "0.0.0",
+  "description": "Automatically configures the hoodie release process.",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hoodiehq/grunt-release-hoodie.git"
+  },
+  "author": {
+    "name": "Stephan Bönnemann",
+    "email": "stephan@boennemann.me"
+  },
+  "keywords": [
+    "gruntplugin"
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
+  "dependencies": {
+    "grunt-bump": "^0.0.14",
+    "grunt-conventional-changelog": "^1.1.0"
+  }
+}
