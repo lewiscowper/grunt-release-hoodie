@@ -6,20 +6,28 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-conventional-changelog');
 
+    var bump = {
+      commitMessage: 'chore(release): v%VERSION%',
+      files: ['package.json', 'bower.json'],
+      commitFiles: [
+        'package.json',
+        'bower.json',
+        'CHANGELOG.md',
+        'dist/*'
+      ],
+      pushTo: 'origin master'
+    };
+
     var options = this.options({
-      bump: {
-        commitMessage: 'chore(release): v%VERSION%',
-        files: ['package.json', 'bower.json'],
-        commitFiles: [
-          'package.json',
-          'bower.json',
-          'CHANGELOG.md',
-          'dist/*'
-        ],
-        pushTo: 'origin master'
-      },
+      bump: {},
       tasks: ['build']
     });
+
+    for (var option in bump) {
+      if (!options.bump[option]) {
+        options.bump[option] = bump[option];
+      }
+    }
 
     grunt.config.set('bump', {options: options.bump});
 
