@@ -3,8 +3,19 @@ module.exports = function (grunt) {
 
   grunt.registerTask('release', 'Automatically configures the hoodie release process.', function() {
 
-    grunt.loadNpmTasks('grunt-bump');
-    grunt.loadNpmTasks('grunt-conventional-changelog');
+    var isSelf = grunt.file.readJSON('package.json').name === 'grunt-release-hoodie';
+    var externalTasks = ['grunt-bump', 'grunt-conventional-changelog'];
+
+    var prefix = 'node_modules/grunt-release-hoodie/node_modules/';
+    var postfix = '/tasks';
+
+    externalTasks.forEach(function(task) {
+      if (isSelf) {
+        grunt.loadNpmTasks(task);
+      } else {
+        grunt.loadTasks(prefix + task + postfix);
+      }
+    });
 
     var bump = {
       commitMessage: 'chore(release): v%VERSION%',
