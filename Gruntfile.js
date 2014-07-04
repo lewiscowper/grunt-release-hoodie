@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         bump: {
           files: ['package.json']
         },
-        tasks: []
+        tasks: ['changelog']
       },
     }
   });
