@@ -13,10 +13,4 @@ module.exports = function (grunt) {
 
   grunt.loadTasks('tasks');
 
-  grunt.registerTask('default', function() {
-    grunt.log
-      .ok()
-      .write('Don\'t mind me. I\'m just here for deployments...');
-  });
-
 };
