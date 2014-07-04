@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 
     var options = this.options({
       bump: {},
-      tasks: ['build']
+      tasks: ['build', 'changelog']
     });
 
     for (var option in bump) {
