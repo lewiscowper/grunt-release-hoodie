@@ -1,3 +1,12 @@
+<a name="1.0.1"></a>
+### 1.0.1 (2014-07-07)
+
+
+#### Bug Fixes
+
+* **dotfiles:** don't break for unchanged dotfiles ([fecb0508](git@github.com:hoodiehq/grunt-release-hoodie/commit/fecb050877dc84921056e13169b444a011e11854))
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 (2014-07-07)
 
