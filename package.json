@@ -23,6 +23,8 @@
   },
   "dependencies": {
     "grunt-bump": "^0.0.14",
-    "grunt-conventional-changelog": "^1.1.0"
+    "grunt-conventional-changelog": "^1.1.0",
+    "ncp": "^0.5.1",
+    "shelljs": "^0.3.0"
   }
 }
