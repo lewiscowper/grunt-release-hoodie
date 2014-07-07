@@ -62,4 +62,4 @@ A list of tasks that get executed before releasing the version.
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## License
-Copyright (c) 2014 Stephan Bönnemann. Licensed under the MIT license.
+Copyright (c) 2014 Stephan Bönnemann. Licensed under the Apache License 2.0 license.

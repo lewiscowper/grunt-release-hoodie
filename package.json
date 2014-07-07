@@ -17,7 +17,10 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "license": "MIT",
+  "licenses": [{
+    "type": "Apache License 2.0",
+    "url": "https://github.com/hoodiehq/grunt-release-hoodie/blob/master/LICENSE"
+  }],
   "devDependencies": {
     "grunt": "^0.4.5"
   },
