@@ -31,15 +31,19 @@ module.exports = function (grunt) {
     };
 
     var handleExec = function(err, stdout, stderr) {
+
       if (err) {
+        grunt.log.debug('Execution failed fatally');
         grunt.fail.fatal(err);
       }
 
       if (stdout) {
+        grunt.log.debug('Execution succeded');
         grunt.log.write(stdout);
       }
 
       if (stderr) {
+        grunt.log.debug('Execution failed');
         grunt.log.warn(stderr);
       }
 
@@ -47,14 +51,22 @@ module.exports = function (grunt) {
     };
 
     run(function() {
+      grunt.log.debug('Verifying cache directory exists');
+
       require(path.join(__dirname, 'util/dir.js')).ensureCacheDir(opts.namespace, function(cacheDirOut) {
+        grunt.log.debug('Directory exists');
+
         cacheDir = cacheDirOut;
         next();
       });
     });
 
     run(function() {
+      grunt.log.debug('Cloning repo');
+
       if (fs.existsSync(path.join(cacheDir, opts.repoDir, '.git'))) {
+        grunt.log.debug('Repo exists');
+
         return next();
       }
 
@@ -62,20 +74,28 @@ module.exports = function (grunt) {
     });
 
     run(function() {
+      grunt.log.debug('Pulling latest changes');
+
       var cwd = path.join(cacheDir, opts.repoDir);
       exec('git pull origin master -f', {cwd: cwd}, handleExec);
     });
 
     run(function() {
+      grunt.log.debug('Copying latest changes');
+
       ncp(path.join(cacheDir, opts.repoDir, 'static/'), '.', handleExec);
     });
 
     run(function() {
+      grunt.log.debug('Adding latest changes');
+
       var files = fs.readdirSync(path.join(cacheDir, opts.repoDir, 'static'));
       exec('git add ' + files.join(' '), handleExec);
     });
 
     run(function() {
+      grunt.log.debug('Commiting latest changes');
+
       exec('git commit -m "chore(dotfiles): latest updates"', handleExec);
     });
 
