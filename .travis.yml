@@ -11,5 +11,6 @@ deploy:
   api_key:
     secure: j/3R3qwblFEKbF4u9oa72bRy9G+/cAjnbIygN2KrOe4PbHBjj0i07Wm653ZESuesUUanf8n/Vv0gVn7XaLACWmZ+J1v8F9tkzt5/1k/cQwEQrlDQv7nsSCG+LkojM9WjYq22xMf7Vt1v7Nmy1tk6S2CQFTBZfJccPUePpa8MAxY=
   on:
+    all_branches: true
     tags: true
     repo: hoodiehq/grunt-release-hoodie
