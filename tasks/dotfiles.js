@@ -23,11 +23,28 @@ module.exports = function (grunt) {
       if (!queue.length) {
         return done();
       }
+
       queue.shift()();
     };
 
     var run = function(behavior) {
       queue.push(behavior);
+    };
+
+    var handleExec = function(err, stdout, stderr) {
+      if (err) {
+        grunt.fail.fatal(err);
+      }
+
+      if (stdout) {
+        grunt.log.write(stdout);
+      }
+
+      if (stderr) {
+        grunt.log.warn(stderr);
+      }
+
+      next();
     };
 
     run(function() {
@@ -42,41 +59,27 @@ module.exports = function (grunt) {
         return next();
       }
 
-      exec('git clone ' + opts.repo + ' ' + opts.repoDir, {cwd: cacheDir}, function(err, stdout, stderr) {
-        grunt.log.write(JSON.stringify(arguments));
-        next();
-      });
+      exec('git clone ' + opts.repo + ' ' + opts.repoDir, {cwd: cacheDir}, handleExec);
     });
 
     run(function() {
       var cwd = path.join(cacheDir, opts.repoDir);
-      exec('git pull origin master -f', {cwd: cwd}, function(err, stdout, stderr) {
-        grunt.log.write(JSON.stringify(arguments));
-        next();
-      });
+      exec('git pull origin master -f', {cwd: cwd}, handleExec);
     });
 
     run(function() {
-      ncp(path.join(cacheDir, opts.repoDir, 'static/'), '.', function(err) {
-        next();
-      });
+      ncp(path.join(cacheDir, opts.repoDir, 'static/'), '.', handleExec);
     });
 
     run(function() {
       var files = fs.readdirSync(path.join(cacheDir, opts.repoDir, 'static'));
-      exec('git add ' + files.join(' '), function(err, stdout, stderr) {
-        next();
-      });
+      exec('git add ' + files.join(' '), handleExec);
     });
 
     run(function() {
-      exec('git commit -m "chore(dotfiles): latest updates"', function(err, stdout, stderr) {
-        next();
-      });
+      exec('git commit -m "chore(dotfiles): latest updates"', handleExec);
     });
 
     next();
-
   });
-
 };
