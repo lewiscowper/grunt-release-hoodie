@@ -33,17 +33,17 @@ module.exports = function (grunt) {
     var handleExec = function(err, stdout, stderr) {
 
       if (err) {
-        grunt.log.debug('Execution failed fatally');
+        grunt.log.debug('Fatal Fail:');
         grunt.fail.fatal(err);
       }
 
       if (stdout) {
-        grunt.log.debug('Execution succeded');
+        grunt.log.debug('Success:');
         grunt.log.write(stdout);
       }
 
       if (stderr) {
-        grunt.log.debug('Execution failed');
+        grunt.log.debug('Fail:');
         grunt.log.warn(stderr);
       }
 
@@ -91,6 +91,19 @@ module.exports = function (grunt) {
 
       var files = fs.readdirSync(path.join(cacheDir, opts.repoDir, 'static'));
       exec('git add ' + files.join(' '), handleExec);
+    });
+
+    run(function() {
+      grunt.log.debug('Check if files changed');
+
+      exec('git diff --name-only --cached', function(err, stdout) {
+        if (!stdout.trim().length) {
+          grunt.log.debug('Nothing changed. My work is done here');
+          return done();
+        }
+
+        handleExec.apply(this, arguments);
+      });
     });
 
     run(function() {
