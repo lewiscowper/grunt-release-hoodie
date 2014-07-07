@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",

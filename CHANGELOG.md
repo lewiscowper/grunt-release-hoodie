@@ -1,3 +1,15 @@
+<a name="1.0.0"></a>
+## 1.0.0 (2014-07-07)
+
+
+#### Features
+
+* **dotfiles:**
+  * handle errors ([81b858d9](git@github.com:hoodiehq/grunt-release-hoodie/commit/81b858d925fddb7595b72c5642be8d45c3dd6e95))
+  * pull in dotfiles from central repo ([b92a5513](git@github.com:hoodiehq/grunt-release-hoodie/commit/b92a5513845989069277dd8579e2da6a22e002db))
+* **release:** release task adds dotfiles per default ([8eaf7b29](git@github.com:hoodiehq/grunt-release-hoodie/commit/8eaf7b29a4def08447cac949bf17b187c2723758))
+
+
 <a name="0.1.1"></a>
 ### 0.1.1 (2014-07-04)
 
