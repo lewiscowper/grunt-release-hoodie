@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 
     var options = this.options({
       bump: {},
+      dotfiles: true,
       tasks: ['build', 'changelog']
     });
 
@@ -46,6 +47,10 @@ module.exports = function (grunt) {
     this.args.unshift('bump-only');
     options.tasks.unshift(this.args.join(':'));
     options.tasks.push('bump-commit');
+
+    if (options.dotfiles && !grunt.option('debug')) {
+      options.tasks.unshift('dotfiles');
+    }
 
     grunt.log.debug(
       'Running the following tasks: ' +
