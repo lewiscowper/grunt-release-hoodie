@@ -37,16 +37,23 @@ module.exports = function(grunt) {
       return done();
     }
 
+    grunt.log.debug('Publishing ' + tag + ' for ' + owner + '/' + repo);
+
     run(function() {
       // extract latest addition to changelog from git diff
-      exec('git diff -U0 --no-color HEAD^ CHANGELOG.md', function(err, stdout) {
+      exec('git diff -U0 --no-color HEAD^ CHANGELOG.md', function(err, stdout, stderr) {
         if (err) {
           grunt.fail.fatal(err);
         }
+
         changes = stdout.split('\n');
         changes.splice(0, 5);
         changes = changes.join('\n').replace(/^\+/gm, '');
+
+        grunt.log.debug(stdout);
+        grunt.log.debug(stderr);
         grunt.log.write(changes);
+
         next();
       });
     });
@@ -60,12 +67,15 @@ module.exports = function(grunt) {
         owner: owner,
         repo: repo,
         tag_name: tag,
-        body: changes
+        body: changes,
+        draft: grunt.option('debug')
       }, function(err) {
         if (err) {
           grunt.fail.fatal(err);
         }
+
         grunt.log.ok('Release published');
+
         next();
       });
     });
