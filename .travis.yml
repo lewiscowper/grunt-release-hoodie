@@ -1,3 +1,5 @@
+before_install:
+  - npm install -g grunt-cli
 script:
   - echo "Don't mind me. I'm here for deployments only..."
 after_success:
