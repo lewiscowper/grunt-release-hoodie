@@ -1,5 +1,7 @@
 script:
   - echo "Don't mind me. I'm here for deployments only..."
+after_success:
+  - grunt ghrelease
 language: node_js
 node_js:
   - '0.10'
@@ -14,3 +16,6 @@ deploy:
     all_branches: true
     tags: true
     repo: hoodiehq/grunt-release-hoodie
+env:
+  global:
+    - secure: "ur4jL3n00s61qoAUWreTS1dcV9Ni2w4o/cvLx5MsBcGKT+A556++OTqEoj8M/+dEEPpCAQpof9Iv+jgodG/jjT1cN6OBx0RtPOufXZi8eplfXhei+6dDOycYNnHO/r8dZIhki15lGmFV0/Vqor038RmVbkoaecOzynx6igf/jRw="
