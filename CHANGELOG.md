@@ -1,3 +1,12 @@
+<a name="1.2.0"></a>
+## 1.2.0 (2014-07-09)
+
+
+#### Features
+
+* **ghrelease:** add debug mode where releases are published as drafts ([9d9c940d](git@github.com:hoodiehq/grunt-release-hoodie/commit/9d9c940d5b584b63d2e166c02a3e2e0a97554f33))
+
+
 <a name="1.1.0"></a>
 ## 1.1.0 (2014-07-09)
 
