@@ -1,3 +1,12 @@
+<a name="1.1.0"></a>
+## 1.1.0 (2014-07-09)
+
+
+#### Features
+
+* **ghrelease:** add task that creates github release with latest changelog additions ([16d3ba22](git@github.com:hoodiehq/grunt-release-hoodie/commit/16d3ba22529d540607db3a51667262e84cf98a19))
+
+
 <a name="1.0.1"></a>
 ### 1.0.1 (2014-07-07)
 
