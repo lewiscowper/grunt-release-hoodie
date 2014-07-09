@@ -30,7 +30,7 @@
     "github": "^0.2.1",
     "grunt-bump": "^0.0.14",
     "grunt-conventional-changelog": "^1.1.0",
-    "ncp": "^0.5.1",
+    "ncp": "^0.6.0",
     "shelljs": "^0.3.0"
   }
 }
