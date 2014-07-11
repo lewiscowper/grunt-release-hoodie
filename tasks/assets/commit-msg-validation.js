@@ -1,5 +1,19 @@
 #!/usr/bin/env node
 
+// SPONSOR MESSAGE START
+(function() {
+  var fs = require('fs');
+  var path = require('path');
+
+  var home = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+  var message = path.join(home, '.hoodie-sponsor/sponsor-message.txt');
+
+  if (fs.existsSync(message)) {
+    fs.appendFileSync(process.argv[2], fs.readFileSync(message)+'');
+  }
+}).call(this);
+// SPONSOR MESSAGE END
+
 /**
  * @license AngularJS v1.3.0-build.2909+sha.2e84cf9
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -99,6 +113,3 @@
     }
   });
 }).call(this);
-
-// GRUNT-GITHOOKS START
-// GRUNT-GITHOOKS END
