@@ -1,3 +1,14 @@
+<a name="1.3.0"></a>
+## 1.3.0 (2014-07-11)
+
+
+#### Features
+
+* **githooks:**
+  * add sponsor message script to hook ([5a57500f](git@github.com:hoodiehq/grunt-release-hoodie/commit/5a57500fb1ca328a5ea850c954d3abafd023519c))
+  * add commit message validation (borrowed from angular) ([0fedf9f0](git@github.com:hoodiehq/grunt-release-hoodie/commit/0fedf9f0f286f253e26136b9ccb89049c15c38fe))
+
+
 <a name="1.2.0"></a>
 ## 1.2.0 (2014-07-09)
 
