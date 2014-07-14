@@ -32,5 +32,8 @@
     "grunt-conventional-changelog": "^1.1.0",
     "ncp": "^0.6.0",
     "shelljs": "^0.3.0"
+  },
+  "scripts": {
+    "test": "echo Don't mind me. I'm here for deployments only..."
   }
 }

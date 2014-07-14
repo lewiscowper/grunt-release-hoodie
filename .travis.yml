@@ -1,23 +1,20 @@
 before_install:
-  - npm install -g grunt-cli
-script:
-  - echo "Don't mind me. I'm here for deployments only..."
+- npm install -g grunt-cli
 after_success:
-  - grunt ghrelease
+- grunt ghrelease
 language: node_js
 node_js:
-  - '0.10'
+- '0.10'
 notifications:
   email: false
 deploy:
   provider: npm
-  email: stephan@boennemann.me
+  email: stephan@thehoodiefirm.com
   api_key:
-    secure: j/3R3qwblFEKbF4u9oa72bRy9G+/cAjnbIygN2KrOe4PbHBjj0i07Wm653ZESuesUUanf8n/Vv0gVn7XaLACWmZ+J1v8F9tkzt5/1k/cQwEQrlDQv7nsSCG+LkojM9WjYq22xMf7Vt1v7Nmy1tk6S2CQFTBZfJccPUePpa8MAxY=
+    secure: coLvcccwvm2yUeR49e2KHFhuYb3qAYdjwUJAaZ2hoMAVlAFiOJQH9vmNuvfCGg6xI8IL0nvMi3hr6e9rnU6okMTRISGu68+yV1Kxc0rm9LsM5qIzVUmX1CsNniv2oYqzb08sQqazcgBVRskLZjOARHormv7VyuErW5nkIwnf6tA=
   on:
     all_branches: true
     tags: true
-    repo: hoodiehq/grunt-release-hoodie
 env:
   global:
-    - secure: "ur4jL3n00s61qoAUWreTS1dcV9Ni2w4o/cvLx5MsBcGKT+A556++OTqEoj8M/+dEEPpCAQpof9Iv+jgodG/jjT1cN6OBx0RtPOufXZi8eplfXhei+6dDOycYNnHO/r8dZIhki15lGmFV0/Vqor038RmVbkoaecOzynx6igf/jRw="
+  - secure: "CS1RGaKIlIEDHtEe4AsBgNTcyGjxwroIvXJCV5xK6P3hPVL3TVXQfXgDql7VUeGl/Ce7HtAXpJvoUBmyETXZEGg0+i0BLDW3BhT7brigm44I6mVExGMo7VUwJ+UzcchTXb3NphRm9pEKy1DzDqdu5zPG+qNclY1TKFWu7GRVz2E="
