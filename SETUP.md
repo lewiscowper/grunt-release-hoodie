@@ -25,7 +25,8 @@ module.exports = function(grunt) {
 - `touch CHANGELOG.md`
 - `git add package.json CHANGELOG.md Gruntfile.js`
 - `git commit -m 'chore(grunt): set up release process'`
-- make sure there is a "test" command in the package.json's script section- create `.travis.yml`
+- make sure there is a "test" command in the package.json's script section
+- create `.travis.yml`
 
 ```
 before_install:
@@ -39,10 +40,10 @@ notifications:
   email: false
 ```
 
-- make sure travis cli is installed (`travis -v`)
-- `travis encrypt GH_TOKEN={TOKEN} --add`
-- `travis setup npm`: "stephan@thehoodiefirm.com", {TOKEN}, yes, no, yes
-- In `.travis.yml` under deploy.on add all_branches: true (caused by a travis bug)
+- make sure travis cli is installed (`travis -v`, `gem install travis`)
+- `travis encrypt GH_TOKEN={TOKEN} --add` (See Basecamp on how to obtain the token)
+- `travis setup npm`: "stephan@thehoodiefirm.com", {TOKEN}, yes, no, yes (See Basecamp on how to obtain the token)
+- In `.travis.yml` under deploy.on add `all_branches: true` (caused by a travis bug)
 - Go to https://travis-ci.org/profile/hoodiehq and enable the repo
 - Add *retina* badge to `README.md` 
 
