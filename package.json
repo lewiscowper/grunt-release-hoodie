@@ -30,6 +30,8 @@
     "github": "^0.2.1",
     "grunt-bump": "^0.0.14",
     "grunt-conventional-changelog": "^1.1.0",
+    "grunt-subgrunt": "^0.4.0",
+    "hoodie-integration-test": "^0.0.1",
     "ncp": "^0.6.0",
     "shelljs": "^0.3.0"
   },
