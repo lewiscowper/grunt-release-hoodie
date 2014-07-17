@@ -36,6 +36,6 @@
     "shelljs": "^0.3.0"
   },
   "scripts": {
-    "test": "echo Don't mind me. I'm here for deployments only..."
+    "test": "grunt integration-test"
   }
 }
