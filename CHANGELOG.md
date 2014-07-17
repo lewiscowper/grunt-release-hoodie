@@ -1,3 +1,12 @@
+<a name="1.4.0"></a>
+## 1.4.0 (2014-07-17)
+
+
+#### Features
+
+* **integration-test:** inital ([8c755ef2](git@github.com:hoodiehq/grunt-release-hoodie/commit/8c755ef249fa4cc0a0da7299dd8c6c8051f71b10))
+
+
 <a name="1.3.1"></a>
 ### 1.3.1 (2014-07-14)
 
