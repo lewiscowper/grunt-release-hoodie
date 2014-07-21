@@ -1,3 +1,12 @@
+<a name="1.4.1"></a>
+### 1.4.1 (2014-07-21)
+
+
+#### Bug Fixes
+
+* **integration-test:** use absolute path for subgrunt location ([af923c35](git@github.com:hoodiehq/grunt-release-hoodie/commit/af923c35cfab0f1c49d787902431b35d43cd686d))
+
+
 <a name="1.4.0"></a>
 ## 1.4.0 (2014-07-17)
 
