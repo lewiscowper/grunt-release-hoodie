@@ -1,3 +1,12 @@
+<a name="1.5.1"></a>
+### 1.5.1 (2014-07-23)
+
+
+#### Bug Fixes
+
+* **integration-test:** link in correct location ([cd8e0882](git@github.com:hoodiehq/grunt-release-hoodie/commit/cd8e088240ab82270806379062a8c8f4399bd937))
+
+
 <a name="1.5.0"></a>
 ## 1.5.0 (2014-07-23)
 
