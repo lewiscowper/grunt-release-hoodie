@@ -1,3 +1,12 @@
+<a name="1.5.0"></a>
+## 1.5.0 (2014-07-23)
+
+
+#### Features
+
+* **integration-test:** npm link currently tested package ([41a25522](git@github.com:hoodiehq/grunt-release-hoodie/commit/41a2552221bd8860605ba6ffebbcf4f64588fbad))
+
+
 <a name="1.4.1"></a>
 ### 1.4.1 (2014-07-21)
 
