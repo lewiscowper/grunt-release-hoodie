@@ -9,19 +9,26 @@ module.exports = function (grunt) {
     grunt.loadTasks(path.join(__dirname, '../node_modules/grunt-shell/tasks'));
 
     var integration = {};
-    integration[path.join(__dirname, '../node_modules/hoodie-integration-test')] = 'default';
+    var integrationPath = path.join(__dirname, '../node_modules/hoodie-integration-test');
+    integration[integrationPath] = 'default';
 
     grunt.config.set('subgrunt', {
       integration: integration
     });
 
     var pkg = grunt.file.readJSON('package.json');
+    var command =
+      'npm link && ' +
+      'cd ' + integrationPath + ' && ' +
+      'npm link ' + pkg.name + ' && ' +
+      'cd -';
+
     grunt.config.set('shell', {
       npmLink: {
-        command: 'npm link && npm link ' + pkg.name
+        command: command
       },
       npmUnlink: {
-        command: 'npm unlink && npm unlink ' + pkg.name
+        command: command.replace('npm link ', 'npm unlink ')
       }
     });
 
