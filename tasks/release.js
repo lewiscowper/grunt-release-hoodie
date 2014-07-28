@@ -46,6 +46,7 @@ module.exports = function (grunt) {
     // Forward arguments to the bump-only task
     this.args.unshift('bump-only');
     options.tasks.unshift(this.args.join(':'));
+    options.tasks.push('codename');
     options.tasks.push('bump-commit');
 
     if (options.dotfiles && !grunt.option('debug')) {
