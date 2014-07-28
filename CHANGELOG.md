@@ -1,3 +1,15 @@
+<a name="1.6.0"></a>
+## 1.6.0 (2014-07-28)
+
+
+#### Features
+
+* **codename:**
+  * add codename to ghrelease ([51b12547](git@github.com:hoodiehq/grunt-release-hoodie/commit/51b12547af75108db4024c0ba348d7d15f41d102))
+  * add codename on release ([c5caac00](git@github.com:hoodiehq/grunt-release-hoodie/commit/c5caac00b5296d58036ee50ca3b0317fe1acab48))
+  * generate codename ([61971209](git@github.com:hoodiehq/grunt-release-hoodie/commit/6197120982ddf28564813c475916122d0bc40d4b))
+
+
 <a name="1.5.1"></a>
 ### 1.5.1 (2014-07-23)
 
