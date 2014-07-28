@@ -31,6 +31,7 @@ module.exports = function(grunt) {
     var repo = slug[1];
     var tag = process.env.TRAVIS_TAG;
     var token = process.env.GH_TOKEN;
+    var name = tag + ' ' + grunt.file.readJSON('./package.json').codename;
 
     if (!tag) {
       grunt.log.warn('Skipping github release creation because this is not a tagged commit.');
@@ -67,6 +68,7 @@ module.exports = function(grunt) {
         owner: owner,
         repo: repo,
         tag_name: tag,
+        name: name,
         body: changes,
         draft: grunt.option('debug')
       }, function(err) {
