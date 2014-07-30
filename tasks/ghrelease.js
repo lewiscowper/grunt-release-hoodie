@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 
   var exec = require('child_process').exec;
   var GitHubApi = require('github');
+  var releaseVersion = require('./util/release-version');
 
   var github = new GitHubApi({
     version: '3.0.0',
@@ -29,7 +30,7 @@ module.exports = function(grunt) {
     var slug = (process.env.TRAVIS_REPO_SLUG || '').split('/');
     var owner = slug[0];
     var repo = slug[1];
-    var tag = process.env.TRAVIS_TAG;
+    var tag = releaseVersion(process.env.TRAVIS_TAG);
     var token = process.env.GH_TOKEN;
     var pkg = grunt.file.readJSON('./package.json');
     var name = tag + (pkg.codename ? ' ' + pkg.codename : '');
