@@ -42,13 +42,16 @@ module.exports = function (grunt) {
       ]
     };
 
-    var options = grunt.config.get('release');
-
-    extend(options, {
-      bump: {},
+    var options = {
       dotfiles: true,
       tasks: ['codename', 'changelog']
-    });
+    };
+
+    extend(options, grunt.config.get('release').options);
+
+    if (!options.bump) {
+      options.bump = {};
+    }
 
     for (var option in bump) {
       if (!options.bump[option]) {
