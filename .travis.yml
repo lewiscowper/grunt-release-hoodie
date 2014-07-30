@@ -10,6 +10,7 @@ node_js:
 notifications:
   email: false
 deploy:
+  skip_cleanup: true
   provider: npm
   email: stephan@thehoodiefirm.com
   api_key:
