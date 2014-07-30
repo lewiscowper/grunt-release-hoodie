@@ -11,4 +11,4 @@ var exports = module.exports = function(tag) {
   return false;
 };
 
-exports.regex = /^release:v?(.+)$/;
+exports.regex = /^release-v?(.+)$/;

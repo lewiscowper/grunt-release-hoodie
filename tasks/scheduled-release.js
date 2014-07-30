@@ -26,7 +26,7 @@ module.exports = function (grunt) {
         'CHANGELOG.md',
         'dist/*'
       ],
-      pushTo: 'origin master'
+      pushTo: 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG
     };
 
     var options = this.options({
