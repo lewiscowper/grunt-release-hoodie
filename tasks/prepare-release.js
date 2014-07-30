@@ -24,6 +24,37 @@ module.exports = function (grunt) {
       });
     });
 
+    grunt.registerTask('git-delete-tag', function() {
+      var done = this.async();
+      var queue = [];
+      var next = function() {
+        if (!queue.length) {
+          return done();
+        }
+
+        queue.shift()();
+      };
+
+      var handleExec = function(err, stdout, stderr) {
+        if (err) {
+          grunt.fail.fatal(err);
+        }
+        grunt.log.debug(stdout);
+        grunt.log.debug(stderr);
+        next();
+      };
+
+      queue.push(function() {
+        exec('git tag -d ' + process.env.TRAVIS_TAG, handleExec);
+      });
+
+      queue.push(function() {
+        exec('git push github :' + process.env.TRAVIS_TAG, handleExec);
+      });
+
+      next();
+    });
+
     grunt.registerTask('abort-deploy', function() {
       grunt.fail.fatal('Release prepared. Failing to stop CI.');
     });
@@ -65,6 +96,7 @@ module.exports = function (grunt) {
     );
 
     options.tasks.unshift('bump-only');
+    options.tasks.unshift('git-delete-tag');
     options.tasks.push('bump-commit');
     options.tasks.push('abort-deploy');
 
