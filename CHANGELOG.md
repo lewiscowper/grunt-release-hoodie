@@ -1,3 +1,33 @@
+<a name="2.0.0"></a>
+## 2.0.0 (2014-07-30)
+
+
+#### Bug Fixes
+
+* **ghrelease:** publish to right tag ([42da418c](git@github.com:hoodiehq/grunt-release-hoodie/commit/42da418c4a519cdda979dcb3dc557182dc11d576))
+* **prepare-release:**
+  * fix config normalisation ([fb9b863e](git@github.com:hoodiehq/grunt-release-hoodie/commit/fb9b863e7f793193e96971f2e466f5168ad9c67d))
+  * push via "github" remote not url ([21ce0b66](git@github.com:hoodiehq/grunt-release-hoodie/commit/21ce0b66053b32acbfde0cf2e48870187b60a86d))
+  * extract tag correctly ([3fa2ef96](git@github.com:hoodiehq/grunt-release-hoodie/commit/3fa2ef96f0bf420eeeaa9f2a7c257c17b687b04c))
+* **release:**
+  * delete local preparation tag right away ([0a3d2beb](git@github.com:hoodiehq/grunt-release-hoodie/commit/0a3d2beb908ff1e0376d9bad81073313f9dc1934))
+  * delete preparation tag ([0aa5141d](git@github.com:hoodiehq/grunt-release-hoodie/commit/0aa5141d169f242722fd283ad2497caa2df2d3cb))
+  * normalize version number ([b960693d](git@github.com:hoodiehq/grunt-release-hoodie/commit/b960693d28de0b94ed5cacc5b07cb3132fb381e6))
+  * correctly set git identity ([7585f2e1](git@github.com:hoodiehq/grunt-release-hoodie/commit/7585f2e1bc8bdbd2be4174d123e4199fd805ba5e))
+  * respect `pushTo` setting ([9ce30abb](git@github.com:hoodiehq/grunt-release-hoodie/commit/9ce30abbec34fa3679ffa745880c5367d30b0f0a))
+* **scheduled-release:**
+  * enforce pushing back ([673b57fc](git@github.com:hoodiehq/grunt-release-hoodie/commit/673b57fcb52ef0507f594212abc8c9c6140b00eb))
+  * fetch config from release to maintain compat ([b0c2924a](git@github.com:hoodiehq/grunt-release-hoodie/commit/b0c2924abd1d8744e04016aa6c5f92d7d2cd3004))
+  * no longer defaulting to `build` stuff ([e1d60f41](git@github.com:hoodiehq/grunt-release-hoodie/commit/e1d60f41112c932182c5d0080990740180419eeb))
+
+
+#### Features
+
+* **deploy:** before and after deploy tasks that handle everything ([63ec5705](git@github.com:hoodiehq/grunt-release-hoodie/commit/63ec57058693bad4a08a5ae2359eed8cd25d65d6))
+* **release:** schedule the release only ([34848f74](git@github.com:hoodiehq/grunt-release-hoodie/commit/34848f74d9d7c56a3da311c9f9c14e1362e46241))
+* **scheduled-release:** renamed release to scheduled-release ([f613cb0f](git@github.com:hoodiehq/grunt-release-hoodie/commit/f613cb0f20af94618b56aac8adfc4c39cb560404))
+
+
 <a name="1.6.2"></a>
 ### 1.6.2 (2014-07-30)
 

@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "1.6.2",
+  "version": "2.0.0",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -43,5 +43,5 @@
   "scripts": {
     "test": "grunt integration-test"
   },
-  "codename": "cool-wolf"
+  "codename": "impeccable-red-deer"
 }
