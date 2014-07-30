@@ -4,7 +4,8 @@ module.exports = function (grunt) {
     release: {
       options: {
         bump: {
-          files: ['package.json']
+          files: ['package.json'],
+          pushTo: 'origin release-on-ci'
         }
       },
     }
