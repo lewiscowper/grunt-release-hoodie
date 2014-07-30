@@ -40,8 +40,7 @@ module.exports = function (grunt) {
         'bower.json',
         'CHANGELOG.md',
         'dist/*'
-      ],
-      pushTo: 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG
+      ]
     };
 
     var options = grunt.config.get('release');
@@ -57,6 +56,8 @@ module.exports = function (grunt) {
         options.bump[option] = bump[option];
       }
     }
+
+    options.bump.pushTo = 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG;
 
     grunt.log.debug('Note: No comitting, tagging or pushing in debug mode');
     grunt.log.debug(
