@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     var options = this.options({
       bump: {},
       dotfiles: true,
-      tasks: ['build', 'changelog']
+      tasks: ['codename', 'changelog']
     });
 
     for (var option in bump) {
@@ -53,10 +53,7 @@ module.exports = function (grunt) {
 
     grunt.config.set('bump', {options: options.bump});
 
-    // Forward arguments to the bump-only task
-    this.args.unshift('bump-only');
-    options.tasks.unshift(this.args.join(':'));
-    options.tasks.push('codename');
+    options.tasks.unshift('bump-only');
     options.tasks.push('bump-commit');
 
     if (options.dotfiles && !grunt.option('debug')) {
