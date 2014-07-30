@@ -1,3 +1,12 @@
+<a name="1.6.2"></a>
+### 1.6.2 (2014-07-30)
+
+
+#### Bug Fixes
+
+* **integration-test:** disable to stop failing builds due to config fails ([b9b93a1b](git@github.com:hoodiehq/grunt-release-hoodie/commit/b9b93a1b58f227ab7d08c99dac5d54a89334cd20))
+
+
 <a name="1.6.1"></a>
 ### 1.6.1 (2014-07-30)
 
