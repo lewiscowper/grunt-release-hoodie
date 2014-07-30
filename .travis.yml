@@ -1,6 +1,8 @@
 before_install:
 - npm install -g grunt-cli
-after_success:
+before_deploy:
+- grunt scheduled-release
+after_deploy:
 - grunt ghrelease
 language: node_js
 node_js:
