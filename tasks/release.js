@@ -11,7 +11,7 @@ module.exports = function(grunt) {
       commit: false,
       createTag: true,
       tagName: 'release-v%VERSION%',
-      pushTo: 'origin master',
+      pushTo: options.bump.pushTo || 'origin master',
     };
 
     grunt.log.debug('Note: No pushing in debug mode');
