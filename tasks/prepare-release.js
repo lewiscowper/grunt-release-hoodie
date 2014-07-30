@@ -1,12 +1,12 @@
 var extend = require('extend');
 var exec = require('child_process').exec;
 var path = require('path');
-var releaseVersion = require('./util/release-version');
+var preparationTag = require('./util/preparation-tag');
 
 module.exports = function (grunt) {
   'use strict';
 
-  grunt.registerTask('scheduled-release', 'Preparing the release for Continous Deployment', function() {
+  grunt.registerTask('prepare-release', 'Preparing the release for Continous Deployment', function() {
 
     ['grunt-bump', 'grunt-conventional-changelog'].forEach(function(task) {
       grunt.loadTasks(require('path').join(__dirname, '../node_modules', task, 'tasks'));
@@ -24,12 +24,7 @@ module.exports = function (grunt) {
       });
     });
 
-    var version = releaseVersion(process.env.TRAVIS_TAG);
-    if (!version) {
-      grunt.fail.fatal('No release scheduled. Refusing to release.');
-    }
-
-    grunt.log.ok('Preparing release for ' + version);
+    var version = preparationTag(process.env.TRAVIS_TAG);
     grunt.option('setversion', version);
 
     var bump = {

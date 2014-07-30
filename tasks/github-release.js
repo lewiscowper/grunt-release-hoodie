@@ -3,14 +3,13 @@ module.exports = function(grunt) {
 
   var exec = require('child_process').exec;
   var GitHubApi = require('github');
-  var releaseVersion = require('./util/release-version');
 
   var github = new GitHubApi({
     version: '3.0.0',
     debug: true
   });
 
-  grunt.registerTask('ghrelease', 'Creates a Github release.', function() {
+  grunt.registerTask('github-release', 'Creates a Github release.', function() {
     var done = this.async();
     var queue = [];
 
@@ -30,15 +29,10 @@ module.exports = function(grunt) {
     var slug = (process.env.TRAVIS_REPO_SLUG || '').split('/');
     var owner = slug[0];
     var repo = slug[1];
-    var tag = releaseVersion(process.env.TRAVIS_TAG);
+    var tag = process.env.TRAVIS_TAG;
     var token = process.env.GH_TOKEN;
     var pkg = grunt.file.readJSON('./package.json');
     var name = tag + (pkg.codename ? ' ' + pkg.codename : '');
-
-    if (!tag) {
-      grunt.log.warn('Skipping github release creation because this is not a tagged commit.');
-      return done();
-    }
 
     grunt.log.debug('Publishing ' + tag + ' for ' + owner + '/' + repo);
 
@@ -78,7 +72,7 @@ module.exports = function(grunt) {
           grunt.fail.fatal(err);
         }
 
-        grunt.log.ok('Release published');
+        grunt.log.ok('GitHub release published');
 
         next();
       });

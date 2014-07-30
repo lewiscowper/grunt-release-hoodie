@@ -6,8 +6,6 @@ var exports = module.exports = function(tag) {
   }
   var version = tag.match(exports.regex)[1];
   if (semverRegex.test(version)) {
-    version.replace(/^v/,'');
-    version = 'v' + version;
     return version;
   }
   return false;
