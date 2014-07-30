@@ -1,3 +1,4 @@
+var extend = require('extend');
 var releaseVersion = require('./util/release-version');
 
 module.exports = function (grunt) {
@@ -29,7 +30,9 @@ module.exports = function (grunt) {
       pushTo: 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG
     };
 
-    var options = this.options({
+    var options = grunt.config.get('release');
+
+    extend(options, {
       bump: {},
       dotfiles: true,
       tasks: ['codename', 'changelog']
