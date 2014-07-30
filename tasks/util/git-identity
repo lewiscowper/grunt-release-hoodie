@@ -2,3 +2,4 @@
 set -e
 git config user.email "stephan@thehoodiefirm.com"
 git config user.name "Hoodie Bot"
+git remote add github https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}

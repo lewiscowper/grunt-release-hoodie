@@ -24,6 +24,10 @@ module.exports = function (grunt) {
       });
     });
 
+    grunt.registerTask('abort-deploy', function() {
+      grunt.fail.fatal('Release prepared. Failing to stop CI.');
+    });
+
     var version = preparationTag(process.env.TRAVIS_TAG);
     grunt.option('setversion', version);
 
@@ -52,7 +56,7 @@ module.exports = function (grunt) {
       }
     }
 
-    options.bump.pushTo = 'https://' + process.env.GH_TOKEN + '@github.com/' + process.env.TRAVIS_REPO_SLUG;
+    options.bump.pushTo = 'github HEAD:master';
 
     grunt.log.debug('Note: No comitting, tagging or pushing in debug mode');
     grunt.log.debug(
@@ -62,11 +66,14 @@ module.exports = function (grunt) {
 
     options.tasks.unshift('bump-only');
     options.tasks.push('bump-commit');
+    options.tasks.push('abort-deploy');
+
+    if (process.env.CI) {
+      options.tasks.unshift('git-identity');
+    }
 
     if (grunt.option('debug')) {
       options.bump.commit = options.bump.createTag = options.bump.push = false;
-    } else {
-      options.tasks.unshift('git-identity');
     }
 
     grunt.config.set('bump', {options: options.bump});
