@@ -1,11 +1,21 @@
+var releaseVersion = require('./util/release-version');
+
 module.exports = function (grunt) {
   'use strict';
 
-  grunt.registerTask('release', 'Automatically configures the hoodie release process.', function() {
+  grunt.registerTask('scheduled-release', 'Preparing the release for Continous Deployment', function() {
 
     ['grunt-bump', 'grunt-conventional-changelog'].forEach(function(task) {
       grunt.loadTasks(require('path').join(__dirname, '../node_modules', task, 'tasks'));
     });
+
+    var version = releaseVersion(process.env.TRAVIS_TAG);
+    if (!version) {
+      grunt.fail.fatal('No release scheduled. Refusing to release.');
+    }
+
+    grunt.log.ok('Preparing release for ' + version);
+    grunt.option('setversion', version);
 
     var bump = {
       commitMessage: 'chore(release): v%VERSION%',
