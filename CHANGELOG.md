@@ -1,3 +1,12 @@
+<a name="1.6.1"></a>
+### 1.6.1 (2014-07-30)
+
+
+#### Bug Fixes
+
+* **ghrelease:** no "undefined" release for locally cached older release plugin ([2f1eb293](git@github.com:hoodiehq/grunt-release-hoodie/commit/2f1eb293072f585debe74bf09e78a4ceab9fb0b5))
+
+
 <a name="1.6.0"></a>
 ## 1.6.0 (2014-07-28)
 
