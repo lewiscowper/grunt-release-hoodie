@@ -26,6 +26,11 @@ module.exports = function(grunt) {
 
     task = task + ':' + this.args.join(':');
 
-    grunt.task.run([task]);
+    grunt.registerTask('set-tag', function() {
+      var pkg = grunt.file.readJSON('./package.json');
+      grunt.option('deletetag', 'release-v'+pkg.version);
+    });
+
+    grunt.task.run([task, 'set-tag','git-delete-tag:local']);
   });
 };
