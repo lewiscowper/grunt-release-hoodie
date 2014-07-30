@@ -1,16 +1,15 @@
 before_install:
 - npm install -g grunt-cli
 before_deploy:
-- grunt scheduled-release
+- grunt before-deploy
 after_deploy:
-- grunt ghrelease
+- grunt after-deploy
 language: node_js
 node_js:
 - '0.10'
 notifications:
   email: false
 deploy:
-  skip_cleanup: true
   provider: npm
   email: stephan@thehoodiefirm.com
   api_key:
