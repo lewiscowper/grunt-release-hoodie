@@ -4,7 +4,11 @@ module.exports = function (grunt) {
     release: {
       options: {
         bump: {
-          files: ['package.json']
+          files: ['package.json'],
+          commitFiles: [
+            'package.json',
+            'CHANGELOG.md'
+          ]
         }
       },
     }
