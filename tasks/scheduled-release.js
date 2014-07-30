@@ -1,4 +1,6 @@
 var extend = require('extend');
+var exec = require('child_process').exec;
+var path = require('path');
 var releaseVersion = require('./util/release-version');
 
 module.exports = function (grunt) {
@@ -8,6 +10,18 @@ module.exports = function (grunt) {
 
     ['grunt-bump', 'grunt-conventional-changelog'].forEach(function(task) {
       grunt.loadTasks(require('path').join(__dirname, '../node_modules', task, 'tasks'));
+    });
+
+    grunt.registerTask('git-identity', function() {
+      var done = this.async();
+      exec(path.join(__dirname, 'util/git-identity'), function(err, stdout, stderr) {
+        if (err) {
+          grunt.fail.fatal(err);
+        }
+        grunt.log.debug(stdout);
+        grunt.log.debug(stderr);
+        done();
+      });
     });
 
     var version = releaseVersion(process.env.TRAVIS_TAG);
@@ -50,14 +64,16 @@ module.exports = function (grunt) {
       JSON.stringify(options.bump, null, 2)
     );
 
+    options.tasks.unshift('bump-only');
+    options.tasks.push('bump-commit');
+
     if (grunt.option('debug')) {
       options.bump.commit = options.bump.createTag = options.bump.push = false;
+    } else {
+      options.tasks.unshift('git-identity');
     }
 
     grunt.config.set('bump', {options: options.bump});
-
-    options.tasks.unshift('bump-only');
-    options.tasks.push('bump-commit');
 
     if (options.dotfiles && !grunt.option('debug')) {
       options.tasks.unshift('dotfiles');

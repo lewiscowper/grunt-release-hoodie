@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+git config user.email "stephan@thehoodiefirm.com"
+git config user.name "Hoodie Bot"
