@@ -27,14 +27,14 @@
     "grunt": "^0.4.5"
   },
   "dependencies": {
-    "animals": "^0.0.1",
+    "animals": "^0.0.3",
     "extend": "^1.3.0",
     "github": "^0.2.1",
-    "grunt-bump": "^0.0.14",
+    "grunt-bump": "^0.0.15",
     "grunt-conventional-changelog": "^1.1.0",
     "grunt-shell": "^0.7.0",
     "grunt-subgrunt": "^0.4.0",
-    "hoodie-integration-test": "^0.0.1",
+    "hoodie-integration-test": "^0.0.4",
     "ncp": "^0.6.0",
     "semver-regex": "^0.1.1",
     "shelljs": "^0.3.0",
