@@ -13,8 +13,7 @@ module.exports = function(grunt) {
         bump: {
           files: ['package.json'],
           commitFiles: ['package.json', 'CHANGELOG.md']
-        },
-        tasks: ['changelog']
+        }
       }
     }
   });
@@ -31,8 +30,10 @@ module.exports = function(grunt) {
 ```
 before_install:
 - npm install -g grunt-cli
-after_success:
-- grunt ghrelease
+before_deploy:
+- grunt before-deploy
+after_deploy:
+- grunt after-deploy
 language: node_js
 node_js:
 - '0.10'
@@ -44,7 +45,7 @@ notifications:
 - `travis encrypt GH_TOKEN={TOKEN} --add` (See Basecamp on how to obtain the token)
 - `travis setup npm`: "stephan@thehoodiefirm.com", {TOKEN}, yes, no, yes (See Basecamp on how to obtain the token)
 - In `.travis.yml` under deploy.on add `all_branches: true` (caused by a travis bug)
-- Go to https://travis-ci.org/profile/hoodiehq and enable the repo
+- Enable the repo `travis enable`
 - Add *retina* badge to `README.md` 
 
 ```
