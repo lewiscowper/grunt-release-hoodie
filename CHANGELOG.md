@@ -1,3 +1,12 @@
+<a name="2.0.0-alpha.1"></a>
+### 2.0.0-alpha.1 (2014-07-31)
+
+
+#### Bug Fixes
+
+* **integration-test:** reenable ([173e0c4e](git@github.com:hoodiehq/grunt-release-hoodie/commit/173e0c4e0cfbfe1055c093e9ae4605a4739a09ba))
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2014-07-30)
 
