@@ -5,6 +5,29 @@
 
 > Automatically configures the hoodie release process.
 
+Using this plugin it is possible to release a new version with just `grunt release`.
+
+This will
+- only release code that doesn't fail it's tests
+- pull in the latest [hoodie-dotfiles](https://github.com/hoodiehq/hoodie-dotfiles)
+- trigger a [release preparation](tasks/prepare-release.js) that generates a changelog as well as a [codename](tasks/codename.js) on (Travis)CI 
+- publishes the new version to npm and GitHub releases
+
+Here is an [example release](https://github.com/hoodiehq/hoodie-cli/releases/tag/v0.5.5).
+
+Configure Travis to deploy to npm (`travis setup npm`) and specify deploy hooks:
+in `.travis.yml`
+```yml
+[...]
+before_install:
+- npm install -g grunt-cli
+before_deploy:
+- grunt before-deploy
+after_deploy:
+- grunt after-deploy
+[...]
+```
+
 ## Getting Started
 This plugin requires Grunt.
 
@@ -54,9 +77,15 @@ The options object that gets forwarded to the [grunt-bump](https://github.com/vo
 
 #### options.tasks
 Type: `Array<String>`
-Default value: `['build']`
+Default value: `['codename', 'changelog']`
 
-A list of tasks that get executed before releasing the version.
+A list of tasks that prepare files for the release commit.
+
+#### options.dotfiles
+Type: `Boolean`
+Default value: true
+
+Whether to pull in the default dotfiles or not.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
