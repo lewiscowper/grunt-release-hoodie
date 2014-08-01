@@ -1,5 +1,9 @@
+var semverSuggest = require('./util/semver-suggest');
+
 module.exports = function(grunt) {
   grunt.registerTask('release', 'Schedules a release to be deployed by CI', function() {
+    var done = this.async();
+
     grunt.loadTasks(require('path').join(__dirname, '../node_modules/grunt-bump/tasks'));
 
     var options = this.options({
@@ -20,17 +24,24 @@ module.exports = function(grunt) {
       bump.push = false;
     }
 
-    var task = 'bump';
-
-    grunt.config.set(task, {options: bump});
-
-    task = task + ':' + this.args.join(':');
-
     grunt.registerTask('set-tag', function() {
       var pkg = grunt.file.readJSON('./package.json');
       grunt.option('deletetag', 'release-v'+pkg.version);
     });
 
-    grunt.task.run([task, 'set-tag','git-delete-tag:local']);
+    grunt.config.set('bump', {options: bump});
+    var tasks = ['bump', 'set-tag','git-delete-tag:local'];
+
+    if (!this.args.length) {
+      return semverSuggest(grunt, function(suggestion) {
+        tasks[0] = tasks[0] + ':' + suggestion;
+        grunt.task.run(tasks);
+        done();
+      });
+    }
+
+    tasks[0] = tasks[0] + ':' + this.args.join(':');
+    grunt.task.run(tasks);
+    done();
   });
 };
