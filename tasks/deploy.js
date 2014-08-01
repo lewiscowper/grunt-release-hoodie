@@ -17,13 +17,10 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('after-deploy', function() {
-    if (isPreparation) {
-      return grunt.log.ok(isPreparation + ' prepared');
-    }
     if (isRelease) {
       grunt.log
         .ok(tag + ' released.')
-        .ok('Publishing release to GitHub and cleaning up preparation tag');
+        .ok('Publishing release to GitHub');
       return grunt.task.run(['github-release']);
     }
     return grunt.fail.fatal('Invalid tag format used.');
