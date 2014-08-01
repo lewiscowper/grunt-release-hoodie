@@ -1,6 +1,7 @@
 var extend = require('extend');
 var exec = require('child_process').exec;
 var path = require('path');
+var fs = require('fs');
 var preparationTag = require('./util/preparation-tag');
 
 module.exports = function (grunt) {
@@ -33,16 +34,22 @@ module.exports = function (grunt) {
 
     var bump = {
       commitMessage: 'chore(release): v%VERSION%',
-      files: ['package.json', 'bower.json'],
+      files: [],
       commitFiles: ['*']
     };
+
+    ['package.json', 'bower.json', 'component.json'].forEach(function(file) {
+      if (fs.existsSync(file)) {
+        bump.files.push(file);
+      }
+    });
 
     var options = {
       dotfiles: true,
       tasks: ['codename', 'changelog']
     };
 
-    extend(options, grunt.config.get('release').options);
+    extend(options, (grunt.config.get('release') || {}).options);
 
     if (!options.bump) {
       options.bump = {};
