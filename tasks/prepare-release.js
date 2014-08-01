@@ -25,11 +25,13 @@ module.exports = function (grunt) {
       });
     });
 
+    var version = preparationTag(process.env.TRAVIS_TAG);
+
     grunt.registerTask('abort-deploy', function() {
-      grunt.fail.fatal('Release prepared. Failing to stop CI.');
+      grunt.log.ok(version + ' prepared');
+      process.exit(0);
     });
 
-    var version = preparationTag(process.env.TRAVIS_TAG);
     grunt.option('setversion', version);
 
     var bump = {
