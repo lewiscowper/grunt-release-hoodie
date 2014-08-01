@@ -35,7 +35,7 @@ module.exports = function (grunt) {
     var bump = {
       commitMessage: 'chore(release): v%VERSION%',
       files: [],
-      commitFiles: ['*']
+      commitFiles: ['-a']
     };
 
     ['package.json', 'bower.json', 'component.json'].forEach(function(file) {
