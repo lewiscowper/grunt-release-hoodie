@@ -1,3 +1,12 @@
+<a name="2.2.0"></a>
+## 2.2.0 (2014-08-01)
+
+
+#### Features
+
+* **release:** automatically suggest the correct semver version based on changes made ([33118f3a](git@github.com:hoodiehq/grunt-release-hoodie/commit/33118f3a866b06efe639a6c53737b3e86aff121d))
+
+
 <a name="2.1.1"></a>
 ### 2.1.1 (2014-08-01)
 
