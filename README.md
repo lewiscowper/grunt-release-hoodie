@@ -8,6 +8,7 @@
 Using this plugin it is possible to release a new version with just `grunt release`.
 
 This will
+- will determine the correct semantic version to use, based on changes made
 - only release code that doesn't fail it's tests
 - pull in the latest [hoodie-dotfiles](https://github.com/hoodiehq/hoodie-dotfiles)
 - trigger a [release preparation](tasks/prepare-release.js) that generates a changelog as well as a [codename](tasks/codename.js) on (Travis)CI 
@@ -15,22 +16,7 @@ This will
 
 Here is an [example release](https://github.com/hoodiehq/hoodie-cli/releases/tag/v0.5.5).
 
-Configure Travis to deploy to npm (`travis setup npm`) and specify deploy hooks:
-in `.travis.yml`
-```yml
-[...]
-before_install:
-- npm install -g grunt-cli
-before_deploy:
-- grunt before-deploy
-after_deploy:
-- grunt after-deploy
-[...]
-```
-
 ## Getting Started
-This plugin requires Grunt.
-
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
@@ -41,6 +27,12 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 
 ```js
 grunt.loadNpmTasks('grunt-release-hoodie');
+```
+
+This task comes with a setup script. You should be good to go after running this.
+
+```shell
+./node_modules/.bin/setup
 ```
 
 ## The "release" task
