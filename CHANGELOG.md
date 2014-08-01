@@ -1,3 +1,21 @@
+<a name="2.1.0"></a>
+## 2.1.0 (2014-08-01)
+
+
+#### Bug Fixes
+
+* **deploy:** clean up after deploy hook ([371be8e5](git@github.com:hoodiehq/grunt-release-hoodie/commit/371be8e5017cd3c67d12d6d00842f00806ef9018))
+* **prepare-release:**
+  * exit 0 after preare instead of fail ([233be8ae](git@github.com:hoodiehq/grunt-release-hoodie/commit/233be8ae8ca492fe5cde96a8b5116b896afeb43f))
+  * really commit all files ([20ab1a70](git@github.com:hoodiehq/grunt-release-hoodie/commit/20ab1a707284a55c949bdc8bba1cf053ecda6dc0))
+  * commit all files ([0fb272d8](git@github.com:hoodiehq/grunt-release-hoodie/commit/0fb272d826cbfae9a54832365859d991dcd4ec3d))
+
+
+#### Features
+
+* **prepare-release:** programatically detect bump files ([fe0a8c9a](git@github.com:hoodiehq/grunt-release-hoodie/commit/fe0a8c9a9407bfd3bfd2a18a77c0a4b1704d2df1))
+
+
 <a name="2.0.1"></a>
 ### 2.0.1 (2014-07-31)
 
