@@ -1,3 +1,18 @@
+<a name="2.3.0"></a>
+## 2.3.0 (2014-08-02)
+
+
+#### Bug Fixes
+
+* **package:** add conventional changelog dependency ([38291057](git@github.com:hoodiehq/grunt-release-hoodie/commit/3829105748a3618dd4db30abccf61ab24ded3878))
+* **prepare-release:** run git-identity earlier ([62e32bb1](git@github.com:hoodiehq/grunt-release-hoodie/commit/62e32bb1d1dcaafbbd2c8228761f191631aa52b1))
+
+
+#### Features
+
+* **setup:** add setup script ([8fee77c1](git@github.com:hoodiehq/grunt-release-hoodie/commit/8fee77c118204edbb295ee33e766e0fc8bfb749e))
+
+
 <a name="2.2.0"></a>
 ## 2.2.0 (2014-08-01)
 

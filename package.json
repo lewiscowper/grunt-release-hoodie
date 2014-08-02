@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -50,5 +50,5 @@
   "bin": {
     "setup": "./bin/setup.js"
   },
-  "codename": "beautiful-ibis"
+  "codename": "stunning-jellyfish"
 }
