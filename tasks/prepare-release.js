@@ -74,10 +74,6 @@ module.exports = function (grunt) {
     options.tasks.push('bump-commit');
     options.tasks.push('abort-deploy');
 
-    if (process.env.CI) {
-      options.tasks.unshift('git-identity');
-    }
-
     if (grunt.option('debug')) {
       options.bump.commit = options.bump.createTag = options.bump.push = false;
     }
@@ -86,6 +82,10 @@ module.exports = function (grunt) {
 
     if (options.dotfiles && !grunt.option('debug')) {
       options.tasks.unshift('dotfiles');
+    }
+
+    if (process.env.CI || process.env.TRAVIS || process.env.CONTINUOUS_INTEGRATION) {
+      options.tasks.unshift('git-identity');
     }
 
     grunt.log.debug(
