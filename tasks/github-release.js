@@ -9,6 +9,8 @@ module.exports = function(grunt) {
     debug: true
   });
 
+  var randomGif = require('./util/random-gif');
+
   grunt.registerTask('github-release', 'Creates a Github release.', function() {
     var done = this.async();
     var queue = [];
@@ -52,6 +54,20 @@ module.exports = function(grunt) {
         grunt.log.write(changes);
 
         next();
+      });
+    });
+
+    run(function() {
+      var searchTerm = pkg.codename.split('-');
+      searchTerm = searchTerm[searchTerm.length-1];
+      randomGif(searchTerm, function(err, res) {
+        if (res) {
+          changes += '\n![' + pkg.codename + '](' + res + ')';
+          changes += '\n![Powered by Giphy](http://i.imgur.com/x6PPiGK.gif)\n';
+        }
+        next();
+
+        console.log(changes);
       });
     });
 
