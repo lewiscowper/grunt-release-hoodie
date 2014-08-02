@@ -3,8 +3,6 @@
 [![Dependency Status](https://david-dm.org/hoodiehq/grunt-release-hoodie.svg)](https://david-dm.org/hoodiehq/grunt-release-hoodie)
 [![devDependency Status](https://david-dm.org/hoodiehq/grunt-release-hoodie/dev-status.svg)](https://david-dm.org/hoodiehq/grunt-release-hoodie#info=devDependencies)
 
-> Don't release :floppy_disk: like a :monkey:, as it causes lot's of :bug::beetle:. Do it like a :princess: using :boar::balloon::shirt:. Use the :clock230: saved and the :moneybag: made to :revolving_hearts:.
-
 ![grunt-release-hoodie](https://cloud.githubusercontent.com/assets/908178/3786831/72e2b5ea-19e7-11e4-9ad2-b382adb4dea8.png)
 
 Using this plugin it is possible to release a new version with just `grunt release`.
