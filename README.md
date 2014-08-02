@@ -79,6 +79,37 @@ Default value: true
 
 Whether to pull in the default dotfiles or not.
 
+## The "dotfiles" task
+
+### Overview
+In your project's Gruntfile, add a section named `dotfiles` to the data object passed into `grunt.initConfig()`.
+
+```js
+grunt.initConfig({
+  dotfiles: {}
+})
+```
+
+### Options
+
+#### options.namespace
+Type: `String`
+Default value: `'.hoodie/'`
+
+The location of where to cache the dotfiles inside your homefolder.
+
+#### options.dotfiles
+Type: `Array`
+Default value: `'dotfiles'`
+
+In which subfolder of `options.namespace` to clone the repo.
+
+#### options.repo
+Type: `String`
+Default value: `'https://github.com/hoodiehq/hoodie-dotfiles.git'`
+
+The repo where the dotfiles are.
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
