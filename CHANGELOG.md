@@ -1,3 +1,12 @@
+<a name="2.4.0"></a>
+## 2.4.0 (2014-08-02)
+
+
+#### Features
+
+* **release:** interactive mode ([340b1db0](git@github.com:hoodiehq/grunt-release-hoodie/commit/340b1db03c1de90cd244246b0ece68c2990c25cf))
+
+
 <a name="2.3.0"></a>
 ## 2.3.0 (2014-08-02)
 
