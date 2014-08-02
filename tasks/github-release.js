@@ -46,12 +46,11 @@ module.exports = function(grunt) {
         }
 
         changes = stdout.split('\n');
-        changes.splice(0, 5);
+        changes.splice(0, 7);
         changes = changes.join('\n').replace(/^\+/gm, '');
 
         grunt.log.debug(stdout);
         grunt.log.debug(stderr);
-        grunt.log.write(changes);
 
         next();
       });
@@ -61,13 +60,13 @@ module.exports = function(grunt) {
       var searchTerm = pkg.codename.split('-');
       searchTerm = searchTerm[searchTerm.length-1];
       randomGif(searchTerm, function(err, res) {
+        grunt.log.debug(err);
         if (res) {
           changes += '\n![' + pkg.codename + '](' + res + ')';
           changes += '\n![Powered by Giphy](http://i.imgur.com/x6PPiGK.gif)\n';
         }
+        grunt.log.write(changes);
         next();
-
-        console.log(changes);
       });
     });
 
