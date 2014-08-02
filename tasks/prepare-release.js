@@ -81,6 +81,9 @@ module.exports = function (grunt) {
     grunt.config.set('bump', {options: options.bump});
 
     if (options.dotfiles && !grunt.option('debug')) {
+      if (grunt.task.exists && grunt.task.exists('jshint')) {
+        options.tasks.unshift('jshint');
+      }
       options.tasks.unshift('dotfiles');
     }
 
