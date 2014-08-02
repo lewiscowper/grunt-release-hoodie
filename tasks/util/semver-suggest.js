@@ -1,5 +1,6 @@
 var ccl = require('conventional-changelog');
 var exec = require('child_process').exec;
+var inquirer = require('inquirer');
 
 var exports = module.exports = function(grunt, cb) {
   exec('git fetch --tags', function(stderr) {
@@ -19,42 +20,62 @@ var exports = module.exports = function(grunt, cb) {
         cb(err);
       }
 
-      if (/# breaking changes/i.test(log)) {
-        grunt.log.ok('Breaking Changes detected.');
-        return exports.suggest(grunt, true, 'major', cb);
-      }
-      if (/# features/i.test(log)) {
-        grunt.log.ok('New features detected.');
-        return exports.suggest(grunt, true, 'minor', cb);
-      }
-      if (!/# bug fixes/i.test(log)) {
-        return exports.suggest(grunt, false, 'patch', cb);
-      }
-
-      grunt.log.ok('Bug fixes detected.');
-      return exports.suggest(grunt, true, 'patch', cb);
+      return exports.suggest(grunt, {
+        breaking: /# breaking changes/i.test(log),
+        features: /# features/i.test(log),
+        fixes: /# bug fixes/i.test(log)
+      }, cb);
     });
   });
 };
 
-exports.suggest = function(grunt, confident, type, cb) {
-  var method = confident ? 'ok' : 'warn';
-  var interval = confident ? 2e3 : 15e3;
-  grunt.log[method]('You probably want to release a new ' + type + ' version.');
+exports.suggest = function(grunt, changes, cb) {
 
-  if (confident) {
+  if (!(changes.breaking || changes.features || changes.fixes)) {
     grunt.log
-      .ok('You have ' + interval/1e3 + ' seconds to cancel this (ctrl + c).');
-  } else {
-    grunt.log
-      .warn('According to the changes made you shouldn\'t release a new version yet…')
-      .warn('…or maybe you just didn\'t stick to the commit message conventions?')
-      .warn('You have ' + interval/1e3 + ' seconds to cancel this (ctrl + c),')
-      .warn('otherwhise a ' + type + ' version will be released.');
+      .warn('According to the changes made you shouldn\'t release a new version yet.')
+      .warn('Did you stick to the commit message conventions?');
   }
-  grunt.log[method]('Use `grunt release:major`, `grunt release:minor`, `grunt release:patch` or `grunt release --setversion=x.y.z` to release a specific version.');
 
-  setTimeout(function() {
+  inquirer.prompt([{
+    type: 'checkbox',
+    name: 'changes',
+    message: 'What kind of changes did you make?',
+    choices: [
+      {
+        name: 'breaking',
+        checked: changes.breaking
+      },
+      {
+        name: 'features',
+        checked: changes.features
+      },
+      {
+        name: 'fixes',
+        checked: changes.fixes
+      },
+      new inquirer.Separator('Or abort this and do not release a new version yet.'),
+      {
+        name: 'abort',
+        checked: !(changes.breaking || changes.features || changes.fixes)
+      }
+    ]
+  }], function(answers) {
+    function has(arr, type) {
+      return arr.indexOf(type) !== -1;
+    }
+    if (has(answers.changes, 'abort')) {
+      return cb('abort');
+    }
+    var type = 'patch';
+    if (has(answers.changes, 'features')) {
+      type = 'minor';
+    }
+    if (has(answers.changes, 'breaking')) {
+      type = 'major';
+    }
     cb(type);
-  }, interval);
+  });
+
+
 };

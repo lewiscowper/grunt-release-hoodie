@@ -34,6 +34,10 @@ module.exports = function(grunt) {
 
     if (!this.args.length) {
       return semverSuggest(grunt, function(suggestion) {
+        if (suggestion === 'abort') {
+          grunt.log.warn('Release aborted');
+          return done();
+        }
         tasks[0] = tasks[0] + ':' + suggestion;
         grunt.task.run(tasks);
         done();
