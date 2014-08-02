@@ -1,3 +1,12 @@
+<a name="2.5.0"></a>
+## 2.5.0 (2014-08-02)
+
+
+#### Features
+
+* **github-release:** append matching animal gif ([702c3a03](git@github.com:hoodiehq/grunt-release-hoodie/commit/702c3a0324f8cace15f09f27ac516a6bac2bc483))
+
+
 <a name="2.4.0"></a>
 ## 2.4.0 (2014-08-02)
 
