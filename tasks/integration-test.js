@@ -11,9 +11,9 @@ module.exports = function (grunt) {
     var task = 'test';
 
     // These are the only modules that do not require deep npm linking
-    var deep = ['hoodie-cli', 'grunt-hoodie'].indexOf(pkg.name) === -1;
+    var flat = ['hoodie-cli', 'grunt-hoodie'].indexOf(pkg.name) !== -1;
 
-    if (deep) {
+    if (!flat) {
       task += ':'+pkg.name;
     }
 
@@ -27,7 +27,7 @@ module.exports = function (grunt) {
 
     var command = 'npm link';
 
-    if (!deep) {
+    if (flat) {
       command += ' && cd ' + integrationPath + ' && npm link ' + pkg.name + ' && cd -';
     }
 
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
       }
     });
 
-    grunt.log.ok('Running with ' + (deep ? 'deep' : '') + 'linked dependencies');
+    grunt.log.ok('Running with ' + (flat ? '' : 'deep') + 'linked dependencies');
     grunt.log.ok(command);
     grunt.task.run(['shell:npmLink', 'subgrunt:integration', 'shell:npmUnlink']);
   });
