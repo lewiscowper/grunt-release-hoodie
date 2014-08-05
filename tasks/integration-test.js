@@ -7,20 +7,29 @@ module.exports = function (grunt) {
     grunt.loadTasks(path.join(__dirname, '../node_modules/grunt-subgrunt/tasks'));
     grunt.loadTasks(path.join(__dirname, '../node_modules/grunt-shell/tasks'));
 
+    var pkg = grunt.file.readJSON('package.json');
+    var task = 'test';
+
+    // These are the only to modules that do not require deep npm linking
+    var deep = ['hoodie-cli', 'grunt-hoodie'].indexOf(pkg.name) === -1;
+
+    if (deep) {
+      task += ':'+pkg.name;
+    }
+
     var integration = {};
     var integrationPath = path.join(__dirname, '../node_modules/hoodie-integration-test');
-    integration[integrationPath] = 'default';
+    integration[integrationPath] = task;
 
     grunt.config.set('subgrunt', {
       integration: integration
     });
 
-    var pkg = grunt.file.readJSON('package.json');
-    var command =
-      'npm link && ' +
-      'cd ' + integrationPath + ' && ' +
-      'npm link ' + pkg.name + ' && ' +
-      'cd -';
+    var command = 'npm link';
+
+    if (!deep) {
+      command += ' && cd ' + integrationPath + ' && npm link ' + pkg.name + ' && cd -';
+    }
 
     grunt.config.set('shell', {
       npmLink: {
@@ -31,6 +40,8 @@ module.exports = function (grunt) {
       }
     });
 
+    grunt.log.ok('Running with ' + (deep ? 'deep' : '') + 'linked dependencies');
+    grunt.log.ok(command);
     grunt.task.run(['shell:npmLink', 'subgrunt:integration', 'shell:npmUnlink']);
   });
 
