@@ -1,8 +1,10 @@
 var semverSuggest = require('./util/semver-suggest');
+var fs = require('fs');
 
 module.exports = function(grunt) {
   grunt.registerTask('release', 'Schedules a release to be deployed by CI', function() {
     var done = this.async();
+    var originalPackage = fs.readFileSync('./package.json');
 
     grunt.loadTasks(require('path').join(__dirname, '../node_modules/grunt-bump/tasks'));
 
@@ -29,8 +31,12 @@ module.exports = function(grunt) {
       grunt.option('deletetag', 'release-v'+pkg.version);
     });
 
+    grunt.registerTask('reset-package', function() {
+      fs.writeFileSync('./package.json', originalPackage);
+    });
+
     grunt.config.set('bump', {options: bump});
-    var tasks = ['bump', 'set-tag','git-delete-tag:local'];
+    var tasks = ['bump', 'set-tag','git-delete-tag:local', 'reset-package'];
 
     if (!this.args.length) {
       return semverSuggest(grunt, function(suggestion) {

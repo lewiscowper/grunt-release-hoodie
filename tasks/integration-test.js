@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     var pkg = grunt.file.readJSON('package.json');
     var task = 'test';
 
-    // These are the only to modules that do not require deep npm linking
+    // These are the only modules that do not require deep npm linking
     var deep = ['hoodie-cli', 'grunt-hoodie'].indexOf(pkg.name) === -1;
 
     if (deep) {
