@@ -1,3 +1,20 @@
+<a name="2.6.0"></a>
+## 2.6.0 (2014-08-06)
+
+
+#### Bug Fixes
+
+* **github-release:** no duplicate headline ([6cbca1be](git@github.com:hoodiehq/grunt-release-hoodie/commit/6cbca1be270986b536ff118ddac9ee9f8a06b08c))
+* **integration-test:** reverse flat vs. deep logic b/c of error handling ([7c264bd9](git@github.com:hoodiehq/grunt-release-hoodie/commit/7c264bd9a4080cff07e274a5b7cb8d218e9c41dc))
+* **prepare-release:** check new jshint config immediately ([76f23812](git@github.com:hoodiehq/grunt-release-hoodie/commit/76f238120e74f0956425657b749d3f6211d20ab5), closes [#2](git@github.com:hoodiehq/grunt-release-hoodie/issues/2))
+* **release:** reset package for clean stage ([1cd6b634](git@github.com:hoodiehq/grunt-release-hoodie/commit/1cd6b634c2dacf95216cf41a86328633283cf44a))
+
+
+#### Features
+
+* **integration-test:** add deep npm linking support ([95e9cfe9](git@github.com:hoodiehq/grunt-release-hoodie/commit/95e9cfe9511448cfbc58dfea5d6329fb1c08018f))
+
+
 <a name="2.5.0"></a>
 ## 2.5.0 (2014-08-02)
 
