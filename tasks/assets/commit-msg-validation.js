@@ -8,9 +8,17 @@
   var home = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
   var message = path.join(home, '.hoodie-sponsor/sponsor-message.txt');
 
-  if (fs.existsSync(message)) {
-    fs.appendFileSync(process.argv[2], fs.readFileSync(message)+'');
+  if (!fs.existsSync(message)) {
+    return;
   }
+
+  var messageBody = fs.readFileSync(message)+'';
+
+  if ((fs.readFileSync(process.argv[2])+'').indexOf(messageBody) !== -1) {
+    return;
+  }
+
+  fs.appendFileSync(process.argv[2], messageBody);
 }).call(this);
 // SPONSOR MESSAGE END
 
