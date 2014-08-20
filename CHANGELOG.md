@@ -1,3 +1,12 @@
+<a name="2.6.1"></a>
+### 2.6.1 (2014-08-20)
+
+
+#### Bug Fixes
+
+* **githooks:** do not append sponsor message more than once ([7a7aaaf6](git@github.com:hoodiehq/grunt-release-hoodie/commit/7a7aaaf697780fdc30b5d1d47a0f5cb5c0cda799))
+
+
 <a name="2.6.0"></a>
 ## 2.6.0 (2014-08-06)
 
