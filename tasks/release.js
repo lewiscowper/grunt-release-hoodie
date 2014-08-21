@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     grunt.config.set('bump', {options: bump});
     var tasks = ['bump', 'set-tag','git-delete-tag:local', 'reset-package'];
 
-    if (!this.args.length) {
+    if (!(this.args.length || grunt.option('setversion'))) {
       return semverSuggest(grunt, function(suggestion) {
         if (suggestion === 'abort') {
           grunt.log.warn('Release aborted');
@@ -50,7 +50,10 @@ module.exports = function(grunt) {
       });
     }
 
-    tasks[0] = tasks[0] + ':' + this.args.join(':');
+    if (this.args.length) {
+      tasks[0] = tasks[0] + ':' + this.args.join(':');
+    }
+
     grunt.task.run(tasks);
     done();
   });
