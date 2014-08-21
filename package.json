@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "2.7.0-rc.1",
+  "version": "2.7.0-rc.2",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -50,5 +50,5 @@
   "bin": {
     "setup": "./bin/setup.js"
   },
-  "codename": "exquisite-duck"
+  "codename": "well-made-meerkat"
 }

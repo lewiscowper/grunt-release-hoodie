@@ -1,3 +1,12 @@
+<a name="2.7.0-rc.2"></a>
+### 2.7.0-rc.2 (2014-08-21)
+
+
+#### Bug Fixes
+
+* **release:** not showing semver prompt for explicit versions ([1fb02bc0](git@github.com:hoodiehq/grunt-release-hoodie/commit/1fb02bc043992f711286a090313f65a57746917b))
+
+
 <a name="2.7.0-rc.1"></a>
 ### 2.7.0-rc.1 (2014-08-21)
 
