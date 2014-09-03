@@ -1,60 +1,47 @@
-var semverSuggest = require('./util/semver-suggest');
-var fs = require('fs');
+'use strict';
+
+var randomGif = require('./util/random-gif');
 
 module.exports = function(grunt) {
-  grunt.registerTask('release', 'Schedules a release to be deployed by CI', function() {
-    var done = this.async();
-    var originalPackage = fs.readFileSync('./package.json');
+  grunt.loadTasks(require('path').join(__dirname, '../node_modules/grunt-semantic-release/tasks'));
+  grunt.task.renameTask('release', 'semantic-release');
 
-    grunt.loadTasks(require('path').join(__dirname, '../node_modules/grunt-bump/tasks'));
-
+  grunt.registerTask('release', function() {
     var options = this.options({
-      bump: {}
+      dotfiles: true,
+      tasks: ['codename', 'changelog']
     });
 
-    var bump = {
-      files: options.bump.files || ['package.json'],
-      commit: false,
-      createTag: true,
-      tagName: 'release-v%VERSION%',
-      pushTo: options.bump.pushTo || 'origin master',
+    var config = {
+      email: 'stephan@thehoodiefirm.com',
+      name: 'Hoodie Bot',
+      tasks:  options.tasks,
+      payload: function(payload, cb) {
+        var pkg = grunt.file.readJSON('./package.json');
+        var searchTerm = pkg.codename.split('-');
+        searchTerm = searchTerm[searchTerm.length-1];
+        randomGif(searchTerm, function(err, res) {
+          grunt.log.debug(err);
+          if (res) {
+            payload.body += '\n![' + pkg.codename + '](' + res + ')';
+            payload.body += '\n![Powered by Giphy](http://i.imgur.com/x6PPiGK.gif)\n';
+          }
+          grunt.log.write(payload.body);
+          cb(payload);
+        });
+      }
     };
 
-    grunt.log.debug('Note: No pushing in debug mode');
-
-    if (grunt.option('debug')) {
-      bump.push = false;
+    if (options.dotfiles) {
+      if (grunt.task.exists && grunt.task.exists('jshint')) {
+        config.tasks.unshift('jshint');
+      }
+      config.tasks.unshift('dotfiles');
     }
 
-    grunt.registerTask('set-tag', function() {
-      var pkg = grunt.file.readJSON('./package.json');
-      grunt.option('deletetag', 'release-v'+pkg.version);
-    });
+    grunt.config.set('release', config);
 
-    grunt.registerTask('reset-package', function() {
-      fs.writeFileSync('./package.json', originalPackage);
-    });
-
-    grunt.config.set('bump', {options: bump});
-    var tasks = ['bump', 'set-tag','git-delete-tag:local', 'reset-package'];
-
-    if (!(this.args.length || grunt.option('setversion'))) {
-      return semverSuggest(grunt, function(suggestion) {
-        if (suggestion === 'abort') {
-          grunt.log.warn('Release aborted');
-          return done();
-        }
-        tasks[0] = tasks[0] + ':' + suggestion;
-        grunt.task.run(tasks);
-        done();
-      });
-    }
-
-    if (this.args.length) {
-      tasks[0] = tasks[0] + ':' + this.args.join(':');
-    }
-
-    grunt.task.run(tasks);
-    done();
+    this.args.unshift('semantic-release');
+    grunt.task.run([this.args.join(':')]);
   });
 };
