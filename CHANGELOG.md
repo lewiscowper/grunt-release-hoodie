@@ -1,3 +1,12 @@
+<a name="2.7.0-rc.3"></a>
+### 2.7.0-rc.3 (2014-09-03)
+
+
+#### Features
+
+* consume grunt-semantic-release ([c9273ee2](git@github.com:hoodiehq/grunt-release-hoodie/commit/c9273ee28b8d593a62de5b6f81f7226e3c0c7b52))
+
+
 <a name="2.7.0-rc.2"></a>
 ### 2.7.0-rc.2 (2014-08-21)
 
