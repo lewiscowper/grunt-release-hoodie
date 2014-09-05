@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "2.7.0-rc.3",
+  "version": "2.7.0-rc.4",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -43,5 +43,5 @@
   "bin": {
     "setup": "./bin/setup.js"
   },
-  "codename": "well-made-meerkat"
+  "codename": "groovy-raccoon"
 }

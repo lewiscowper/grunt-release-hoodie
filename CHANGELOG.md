@@ -1,3 +1,12 @@
+<a name="2.7.0-rc.4"></a>
+### 2.7.0-rc.4 (2014-09-05)
+
+
+#### Bug Fixes
+
+* **config:** correctly configure release on CI as well ([976f5079](git@github.com:hoodiehq/grunt-release-hoodie/commit/976f5079645d8f32f60f8847265eff0ec426921c))
+
+
 <a name="2.7.0-rc.3"></a>
 ### 2.7.0-rc.3 (2014-09-03)
 
