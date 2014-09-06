@@ -3,18 +3,7 @@
 [![Dependency Status](https://david-dm.org/hoodiehq/grunt-release-hoodie.svg)](https://david-dm.org/hoodiehq/grunt-release-hoodie)
 [![devDependency Status](https://david-dm.org/hoodiehq/grunt-release-hoodie/dev-status.svg)](https://david-dm.org/hoodiehq/grunt-release-hoodie#info=devDependencies)
 
-![grunt-release-hoodie](https://cloud.githubusercontent.com/assets/908178/3786831/72e2b5ea-19e7-11e4-9ad2-b382adb4dea8.png)
-
-Using this plugin it is possible to release a new version with just `grunt release`.
-
-This will
-- will determine the correct semantic version to use, based on changes made (Yes the checkboxes are prechecked for you).
-- only release code that doesn't fail it's tests
-- pull in the latest [hoodie-dotfiles](https://github.com/hoodiehq/hoodie-dotfiles)
-- trigger a [release preparation](tasks/prepare-release.js) that generates a changelog as well as a [codename](tasks/codename.js) on (Travis)CI 
-- publishes the new version to npm and GitHub releases
-
-Here is an [example release](https://github.com/hoodiehq/hoodie-cli/releases/tag/v0.5.5).
+This plugin enables and configures [semantic releases](https://github.com/boennemann/grunt-semantic-release), [codename generation](tasks/codename.js), [integration tests](tasks/integration-test.js), [synced dotfiles](tasks/dotfiles.js) and [common githooks](tasks/githooks.js) for all hoodie packages.
 
 ## Getting Started
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
