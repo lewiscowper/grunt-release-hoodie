@@ -1,3 +1,12 @@
+<a name="2.7.1"></a>
+### 2.7.1 (2014-09-17)
+
+
+#### Bug Fixes
+
+* **package:** use latest integration-test for fixes ([350f3b80](git@github.com:hoodiehq/grunt-release-hoodie/commit/350f3b80e8e2372175fdcaa038d187879b6536a8))
+
+
 <a name="2.7.0"></a>
 ## 2.7.0 (2014-09-06)
 
