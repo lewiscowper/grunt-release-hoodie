@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "2.7.1",
+  "version": "2.8.0-beta.1",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -32,7 +32,7 @@
     "grunt-semantic-release": "^0.2.0",
     "grunt-shell": "^0.7.0",
     "grunt-subgrunt": "^0.4.0",
-    "hoodie-integration-test": "^0.2.1",
+    "hoodie-integration-test": "^0.3.0-beta.1",
     "ncp": "^0.6.0",
     "shelljs": "^0.3.0",
     "superb": "^1.0.2"
@@ -43,5 +43,5 @@
   "bin": {
     "setup": "./bin/setup.js"
   },
-  "codename": "good-human"
+  "codename": "well-made-gerbil"
 }
