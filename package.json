@@ -32,7 +32,7 @@
     "grunt-semantic-release": "^0.2.0",
     "grunt-shell": "^0.7.0",
     "grunt-subgrunt": "^0.4.0",
-    "hoodie-integration-test": "^0.3.0-beta.1",
+    "hoodie-integration-test": "^0.3.0",
     "ncp": "^0.6.0",
     "shelljs": "^0.3.0",
     "superb": "^1.0.2"
