@@ -9,6 +9,8 @@ node_js:
 - '0.10'
 notifications:
   email: false
+  slack:
+    secure: sHsk2v7CoTpvithMrxmg0O63Uf48mhQ3i5uF4/7BpkPXGN/ne3vUpF/kN6HNJjVfiYiZJS3F8ziq92JpD4eibmpvlf2qxEBtwolok77v7zRshLb/7e7wdqLu5GOhyJeFcXEoLaSFxDowk92txcEo3c09r6iHJvnnKQWULt1u5d0=
 deploy:
   provider: npm
   email: stephan@thehoodiefirm.com
