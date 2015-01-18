@@ -1,6 +1,6 @@
 {
   "name": "grunt-release-hoodie",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "description": "Automatically configures the hoodie release process.",
   "repository": {
     "type": "git",
@@ -43,5 +43,5 @@
   "bin": {
     "setup": "./bin/setup.js"
   },
-  "codename": "cat's meow-elk"
+  "codename": "ace-giraffe"
 }
